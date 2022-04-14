@@ -29,6 +29,9 @@ async function isFirstContribution(
       core.info("===================")
       core.info(JSON.stringify(contributor))
       core.info("===================")
+      if (contributor.contributions == 1 ) {
+        return true;
+      }
       return false;
     }
   }
