@@ -1,0 +1,12 @@
+name: 'first contribution check action'
+description: 'Find new contributors on a repository'
+branding:
+  icon: 'message-circle'
+  color: 'green'
+outputs:
+    is_new_contributor: 
+        description: "flag for specifying a commiter is a new contributor or not."
+
+runs:
+  using: 'node12'
+  main: 'src/index.js'
