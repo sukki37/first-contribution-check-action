@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Print Output of Previous Step
         run: |
-          echo 'first-check output is ${{ steps.first-check.outputs.is_new_contributor }}'
+          echo 'first-check output is ${{ steps.first-check.outputs.isNewContributor }}'
 ```
 
 That's it!

@@ -49,30 +49,22 @@ async function run() {
     const githubClient = github.getOctokit(accessToken);
     core.info("Request received");
 
-    core.info(JSON.stringify(payload))
+    const userName = payload.head_commit.author.username;
+    const owner = payload.repository.owner.login;
+    const repoName = payload.repository.name;
 
-    core.info('Debug Info Printed')
-
-    if (payload.event_name === "push") {
-      core.info("Checking begins...");
-      const userName = payload.event.commits[0].author.name;
-      const owner = payload.repository_owner;
-      const repoName = payload.event.repository.name;
-
-      const isFirst = await isFirstContribution(
-        githubClient, owner, repoName,
-        userName
-      );
-      
-      if (isFirst) {
-        core.info("First Successful PR");;
-      }else {
-        core.info("Not First Successful PR");
-      }
-      core.setOutput('isNewContributor', isFirst);
+    const isFirst = await isFirstContribution(
+      githubClient, owner, repoName,
+      userName
+    );
+    
+    if (isFirst) {
+      core.info("First Successful PR");;
     }else {
-      core.warning("event type [" + payload.event_name +"] is unsupported now")
+      core.info("Not First Successful PR");
     }
+    core.setOutput('isNewContributor', isFirst);
+   
   } catch (err) {
     core.setFailed(err.message);
   }
