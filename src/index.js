@@ -23,11 +23,11 @@ async function isFirstContribution(
   }
 
   for (const contributor of contributors) {
-    core.info(JSON.stringify(contributor))
+    
     const login = contributor.login;
     if (login === sender) {
       core.info("===================")
-      core.info(login)
+      core.info(JSON.stringify(contributor))
       core.info("===================")
       return false;
     }
