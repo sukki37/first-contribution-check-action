@@ -14,11 +14,6 @@ Create a workflow .yml file in your repositories .github/workflows directory.
 
 flag for filtering merged pull requests from first-time contributors.
 
-### Env
-
-### `GITHUB_TOKEN`
-
-A message template of the form `message message {}`
 
 ## Getting Started
 
