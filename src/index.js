@@ -49,6 +49,8 @@ async function run() {
     const githubClient = github.getOctokit(accessToken);
     core.info("Request received");
 
+    core.info(JSON.stringify(payload))
+
     if (payload.event_name === "push") {
       core.info("Checking begins...");
       const userName = payload.event.commits[0].author.name;
@@ -65,7 +67,7 @@ async function run() {
       }else {
         core.info("Not First Successful PR");
       }
-      core.setOutput('is_new_contributor', isFirst);
+      core.setOutput('isNewContributor', isFirst);
     }else {
       core.warning("event type [" + payload.event_name +"] is unsupported now")
     }
