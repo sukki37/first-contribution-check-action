@@ -51,6 +51,8 @@ async function run() {
 
     core.info(JSON.stringify(payload))
 
+    core.info('Debug Info Printed')
+
     if (payload.event_name === "push") {
       core.info("Checking begins...");
       const userName = payload.event.commits[0].author.name;
