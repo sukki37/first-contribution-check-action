@@ -53,6 +53,8 @@ async function run() {
     const owner = payload.repository.owner.login;
     const repoName = payload.repository.name;
 
+    core.info("head_commit.author.username is " + userName);
+
     const isFirst = await isFirstContribution(
       githubClient, owner, repoName,
       userName
